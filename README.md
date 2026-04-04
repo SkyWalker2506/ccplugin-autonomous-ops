@@ -1,6 +1,14 @@
-# ccplugin-autonomous-ops
+# autonomous-ops — Claude Code Plugin
+
+by [Musab Kara](https://linkedin.com/in/musab-kara-85580612a) · [GitHub](https://github.com/SkyWalker2506)
 
 Claude Code plugin bundling autonomous execution modes: full YOLO mode, background agent delegation, and multi-agent team build loops.
+
+## Install
+
+```bash
+claude plugin install autonomous-ops@musabkara-claude-marketplace
+```
 
 ## Commands
 
@@ -10,12 +18,6 @@ Claude Code plugin bundling autonomous execution modes: full YOLO mode, backgrou
 | `/rbg <task>` | Run a task in a background agent |
 | `/team-build [setup\|run\|status]` | Multi-agent team loop — Opus designs, Sonnet/Haiku codes |
 | `/yolo-log [--all]` | Show what the last /yolo run did |
-
-## Installation
-
-```bash
-claude plugin install SkyWalker2506/ccplugin-autonomous-ops
-```
 
 ## How It Works
 
@@ -59,3 +61,8 @@ ccplugin-autonomous-ops/
 ## License
 
 MIT
+
+## Part of
+
+- [claude-config](https://github.com/SkyWalker2506/claude-config) — Multi-Agent OS for Claude Code (110 agents, local-first routing)
+- [Plugin Marketplace](https://github.com/SkyWalker2506/claude-marketplace) — Browse & install all 14 plugins
