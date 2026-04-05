@@ -2,10 +2,7 @@
   "name": "autonomous-ops",
   "version": "1.0.0",
   "description": "Claude Code plugin bundling autonomous execution modes: full YOLO mode, background agent delegation, and multi-agent team build loops.",
-  "author": {
-    "name": "Musab Kara",
-    "url": "https://github.com/SkyWalker2506"
-  },
+  "author": "Musab Kara",
   "license": "MIT",
   "category": "development",
   "keywords": [
@@ -16,31 +13,12 @@
     "multi-agent"
   ],
   "commands": [
-    {
-      "name": "yolo",
-      "description": "Full autonomous mode \u2014 zero questions, bypass obstacles, commit at every milestone",
-      "source": "commands/yolo.md"
-    },
-    {
-      "name": "rbg",
-      "description": "Run task in background agent with run_in_background",
-      "source": "commands/rbg.md"
-    },
-    {
-      "name": "team-build",
-      "description": "Multi-agent team loop \u2014 Opus designs, Sonnet/Haiku codes, autonomous iterations",
-      "source": "commands/team-build.md"
-    },
-    {
-      "name": "yolo-log",
-      "description": "Show what the last /yolo run did \u2014 steps, commits, skips",
-      "source": "commands/yolo-log.md"
-    }
+    "commands/yolo.md",
+    "commands/rbg.md",
+    "commands/team-build.md",
+    "commands/yolo-log.md"
   ],
   "skills": [
-    {
-      "name": "autonomous-ops",
-      "source": "skills/autonomous-ops/SKILL.md"
-    }
+    "skills/autonomous-ops/SKILL.md"
   ]
 }
