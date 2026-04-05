@@ -18,7 +18,7 @@
   "commands": [
     {
       "name": "yolo",
-      "description": "Full autonomous mode — zero questions, bypass obstacles, commit at every milestone",
+      "description": "Full autonomous mode \u2014 zero questions, bypass obstacles, commit at every milestone",
       "source": "commands/yolo.md"
     },
     {
@@ -28,12 +28,12 @@
     },
     {
       "name": "team-build",
-      "description": "Multi-agent team loop — Opus designs, Sonnet/Haiku codes, autonomous iterations",
+      "description": "Multi-agent team loop \u2014 Opus designs, Sonnet/Haiku codes, autonomous iterations",
       "source": "commands/team-build.md"
     },
     {
       "name": "yolo-log",
-      "description": "Show what the last /yolo run did — steps, commits, skips",
+      "description": "Show what the last /yolo run did \u2014 steps, commits, skips",
       "source": "commands/yolo-log.md"
     }
   ],
