@@ -2,7 +2,10 @@
   "name": "autonomous-ops",
   "version": "1.0.0",
   "description": "Claude Code plugin bundling autonomous execution modes: full YOLO mode, background agent delegation, and multi-agent team build loops.",
-  "author": "Musab Kara",
+  "author": {
+    "name": "Musab Kara",
+    "url": "https://github.com/SkyWalker2506"
+  },
   "license": "MIT",
   "category": "development",
   "keywords": [
