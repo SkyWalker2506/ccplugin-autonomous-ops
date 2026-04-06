@@ -41,23 +41,6 @@ Creates a multi-agent development team:
 
 Read-only report of the last /yolo execution. Shows completed steps, changed files, and commit hashes. Use `--all` to include skipped items.
 
-## Plugin Structure
-
-```
-ccplugin-autonomous-ops/
-  .claude-plugin/
-    plugin.json
-  commands/
-    yolo.md
-    rbg.md
-    team-build.md
-    yolo-log.md
-  skills/
-    autonomous-ops/
-      SKILL.md
-  README.md
-```
-
 ## License
 
 MIT
@@ -65,4 +48,5 @@ MIT
 ## Part of
 
 - [claude-config](https://github.com/SkyWalker2506/claude-config) — Multi-Agent OS for Claude Code (134 agents, local-first routing)
-- [Plugin Marketplace](https://github.com/SkyWalker2506/claude-marketplace) — Browse & install all 15 plugins
+- [Plugin Marketplace](https://github.com/SkyWalker2506/claude-marketplace) — Browse & install all 18 plugins
+- [ClaudeHQ](https://github.com/SkyWalker2506/ClaudeHQ) — Claude ecosystem HQ
