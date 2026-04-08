@@ -8,20 +8,5 @@
   },
   "license": "MIT",
   "category": "development",
-  "keywords": [
-    "yolo",
-    "autonomous",
-    "team-build",
-    "background",
-    "multi-agent"
-  ],
-  "commands": [
-    "commands/yolo.md",
-    "commands/rbg.md",
-    "commands/team-build.md",
-    "commands/yolo-log.md"
-  ],
-  "skills": [
-    "skills/autonomous-ops/SKILL.md"
-  ]
+  "keywords": ["yolo", "autonomous", "team-build", "background", "multi-agent"]
 }
