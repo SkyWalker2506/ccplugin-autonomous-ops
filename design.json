@@ -1,0 +1,43 @@
+{
+  "cds_version": "1.0",
+  "name": "ccplugin-autonomous-ops",
+  "type": "plugin",
+  "input_patterns": [
+    {
+      "type": "slash_command",
+      "commands": [
+        "/run-yolo",
+        "/run-rbg",
+        "/build-team"
+      ]
+    }
+  ],
+  "output_patterns": [
+    {
+      "type": "terminal_text",
+      "max_lines": 20
+    },
+    {
+      "type": "file_generation",
+      "path": ".yolo/ and .team-build/ dirs"
+    },
+    {
+      "type": "cache_file",
+      "path": "~/.cache/claude/autonomous-ops/",
+      "ttl_seconds": 0
+    }
+  ],
+  "lifecycle": {
+    "preflight": {
+      "required_tools": [
+        "git"
+      ],
+      "required_secrets": [],
+      "required_mcp": []
+    }
+  },
+  "error_handling": {
+    "retry_network": false,
+    "max_retries": 0
+  }
+}
