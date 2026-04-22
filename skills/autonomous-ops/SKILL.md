@@ -21,10 +21,10 @@ Unified skill for all autonomous execution modes bundled in this plugin.
 
 This skill activates when the conversation mentions any of these:
 
-- **yolo**: "yolo", "full auto", "otonom yap", "salliyorum", "just do it", "autonomous"
-- **rbg**: "background", "arka plan", "rbg", "run in background"
-- **team-build**: "team build", "agent team", "multi-agent", "takimla yap", "opus + sonnet"
-- **yolo-log**: "yolo log", "yolo-log", "ne yaptin", "yolo rapor", "show yolo"
+- **yolo**: "yolo", "full auto", "otonom yap", "otonom", "salliyorum", "sallıyorum", "just do it", "autonomous", "yolo mode"
+- **rbg**: "background", "arka plan", "arka planda", "rbg", "run in background", "background agent"
+- **team-build**: "team build", "agent team", "multi-agent", "takimla yap", "takımla yap", "opus + sonnet", "takim kur", "takım kur", "agent loop"
+- **yolo-log**: "yolo log", "yolo-log", "ne yaptin", "ne yaptın", "yolo rapor", "show yolo", "yolo report"
 
 ## How It Works
 

@@ -40,10 +40,31 @@ $ARGUMENTS
 
 ---
 
+## Dispatch Mechanism
+
+`disable-model-invocation: true` in this command's frontmatter means Claude Code will **not** auto-invoke an LLM when the slash command is triggered. Instead, the command spec itself IS the prompt — Claude reads it and executes as an agent turn.
+
+The actual background delegation happens inside that turn via the `run_in_background` SDK parameter:
+
+```
+Agent(
+  prompt="<task from $ARGUMENTS>",
+  model="sonnet",
+  run_in_background=True,
+  description="rbg: <task summary>"
+)
+```
+
+### Fallback (if background agent is unavailable)
+
+If the environment does not support `run_in_background`:
+1. Execute the task in the current turn (foreground)
+2. Notify the user: "Note: background execution is not available in this environment — running in foreground."
+
 ## After the Slash is Processed (when turn arrives)
 
-1. Immediately move the task to background: `run_in_background: true` / Background Agent / Task — whichever mechanism the environment supports.
-2. Follow **`CLAUDE.md`**, security rules, and Jira/MCP rules from **`docs/CLAUDE_JIRA.md`** if applicable.
+1. Immediately move the task to background: `run_in_background: True` via Agent SDK call.
+2. Follow **`CLAUDE.md`**, security rules, and Jira/MCP rules if applicable.
 3. When done, post a **short summary** to the main conversation.
 
 If you need to edit a file **immediately** in the main session: use `scripts/` or editor directly; `/rbg` waits for its turn.

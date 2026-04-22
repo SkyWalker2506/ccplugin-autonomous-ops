@@ -10,15 +10,22 @@ Show what the last `/yolo` run **did**. Default: only completed work. `--all` in
 
 ## Flow
 
-### 1. Read Log Files
+### 1. Read and Validate Log Files
 
 ```bash
 cat .yolo/log.json 2>/dev/null
 cat .yolo/skipped.json 2>/dev/null
 ```
 
-If files don't exist:
-> No /yolo run found or log files are missing.
+Apply these validation guards before rendering:
+
+| Condition | Response |
+|-----------|----------|
+| File does not exist | `No /yolo run found — .yolo/log.json is missing.` |
+| File exists but is empty | `Log file is empty. Was /yolo interrupted before any steps ran?` |
+| File contains invalid JSON | `Log file is corrupted. Raw content: <first 200 chars>` |
+| File is a valid empty array `[]` | `No steps recorded yet. /yolo may have been interrupted at startup.` |
+| File parses successfully | Render the report table normally |
 
 ### 2. Output Format
 
