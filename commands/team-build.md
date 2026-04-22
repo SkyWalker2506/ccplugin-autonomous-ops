@@ -68,6 +68,7 @@ Create `.team-build/config.json` from answers:
 
 ```json
 {
+  "version": "1.0",
   "project": "Project Name",
   "description": "Short description",
   "type": "website",
@@ -88,6 +89,9 @@ Create `.team-build/config.json` from answers:
   "webResearch": true,
   "createdAt": "2026-04-01T12:00:00Z"
 }
+```
+
+> **Note:** If `version` is missing from an existing config file, treat it as `"1.0"` for backward compatibility.
 ```
 
 Agent model assignment:
