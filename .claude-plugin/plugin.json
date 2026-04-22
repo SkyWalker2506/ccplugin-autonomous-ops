@@ -1,6 +1,6 @@
 {
   "name": "autonomous-ops",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Claude Code plugin bundling autonomous execution modes: full YOLO mode, background agent delegation, and multi-agent team build loops.",
   "author": {
     "name": "Musab Kara",
