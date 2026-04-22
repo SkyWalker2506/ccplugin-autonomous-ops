@@ -29,6 +29,32 @@ Start the appropriate phase based on the argument:
 
 ---
 
+## Status Subcommand (`/team-build status`)
+
+Read `.team-build/config.json` and `.team-build/reports/` to show current progress.
+
+### Output Format
+
+```
+## Team Build Status — <Project Name>
+
+| Agent | Name | Status | Last Turn | Files Changed |
+|-------|------|--------|-----------|---------------|
+| agent-01 | Design System | completed | 2 | src/styles/... |
+| agent-02 | Data Factory | in-progress | — | — |
+| agent-03 | Landing Page | not started | — | — |
+
+Completed: 1/3 agents | Turns used: 2/10
+```
+
+### Edge Cases
+
+- **No config found:** `No .team-build/config.json found. Run /team-build setup first.`
+- **No reports yet:** Show all agents as "not started"
+- **Config missing version:** Treat as version "1.0" (backward compatible)
+
+---
+
 ## Phase 1: Setup (interactive — first time only)
 
 Ask the user these questions (use parenthesized defaults if no answer):
@@ -168,10 +194,14 @@ After specs are written, move to Phase 3.
 
 ## Phase 3: Autonomous Loop (no questions — fully autonomous)
 
-Start the shell script:
+Start the shell script (bundled with the plugin):
 
 ```bash
-~/Projects/claude-config/projects/scripts/team-build.sh
+# From the project root where .team-build/ lives:
+bash "$(claude plugin path autonomous-ops)/scripts/team-build.sh"
+
+# Or if running from the plugin directory directly:
+bash scripts/team-build.sh
 ```
 
 The script works as follows (each iteration):
