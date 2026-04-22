@@ -8,6 +8,18 @@ argument-hint: "<task description>"
 
 Execute the given task with **zero questions asked**, going as far as possible. Obstacles are bypassed, every milestone gets a commit, and results are reported.
 
+## Flags
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--dry-run` | off | Analyze and plan only — no file writes, no commits |
+| `--model <name>` | `sonnet` | Override agent model: `haiku` \| `sonnet` \| `opus` |
+
+Examples:
+- `/yolo --dry-run add authentication` — preview the plan, no execution
+- `/yolo --model haiku add a CHANGELOG.md` — use Haiku (faster, cheaper) for simple tasks
+- `/yolo --model opus redesign the entire auth system` — use Opus for complex, high-stakes work
+
 ## Core Principles
 
 1. **NEVER ask questions** — no user prompts, no confirmation waits
@@ -43,6 +55,33 @@ Add `.yolo/` to `.gitignore` (create if missing, append if exists).
 ### 2. Analysis (max 5 tool calls)
 
 Quick scan of the project: language, framework, structure. No long exploration.
+
+### 2b. Flag: `--dry-run`
+
+If `--dry-run` is in arguments:
+
+1. Run analysis (step 2) normally
+2. Output a plan table:
+   ```
+   ## /yolo Dry Run — <task>
+
+   | Step | Action | Files | Obstacle Risk |
+   |------|--------|-------|---------------|
+   | 1 | Scaffold Next.js project | package.json, app/ | Low |
+   | 2 | Add auth middleware | middleware.ts | Medium — will use fake auth |
+   | 3 | Create dashboard page | app/dashboard/page.tsx | Low |
+
+   Dry run complete. Run `/yolo <task>` to execute.
+   ```
+3. **Stop here** — no files written, no commits, no log entries (or log with `"action": "planned"`)
+
+### 2c. Flag: `--model <name>`
+
+Parse `--model` from arguments before execution:
+- Valid values: `haiku`, `sonnet`, `opus`
+- Default: `sonnet`
+- Invalid value: show error and exit — `Invalid model "<value>". Valid options: haiku, sonnet, opus`
+- Use the resolved model in the Agent prompt template (replacing hardcoded `model="sonnet"`)
 
 ### 3. Execution
 
@@ -156,16 +195,19 @@ Agent(
   8. On completion: add "complete" entry to .yolo/log.json.
 
   LOG ENTRY FORMAT:
-  {"step": N, "action": "create|modify|configure|scaffold|install|skip", "what": "...", "files": [...], "commit": "hash|null", "ts": "ISO"}
+  {"step": N, "action": "create|modify|configure|scaffold|install|skip|error|watchdog-check|complete", "what": "...", "files": [...], "commit": "hash|null", "ts": "ISO"}
+  For errors add: "error": "<message>"
 
   SKIP ENTRY FORMAT:
   {"what": "...", "reason": "...", "workaround": "..."}
 
   OBSTACLE BYPASS: DB->mock, Auth->fake, API key->fallback, Jira->skip, Paid->skip, Docker->skip, CI->simple script.
 
-  WATCHDOG: This task is long. Max 50 tool calls. Self-check every 5 calls.
+  WATCHDOG:
+  - Self-check at call 25: Review progress, log {"action": "watchdog-check", "what": "25-call check", "calls_used": 25, "decision": "continue|wrap-up|escalate", "ts": "ISO"}. If more than 80% done, continue. If stuck or looping, wrap up and log summary.
+  - Hard limit at call 50: Force completion — add "complete" entry and stop.
   """,
-  model="sonnet",
+  model="$MODEL",  # Replace with resolved model: haiku | sonnet | opus (default: sonnet)
   run_in_background=True,
   description="yolo: <task summary>"
 )
