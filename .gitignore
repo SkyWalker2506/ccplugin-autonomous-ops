@@ -1,0 +1,14 @@
+# Runtime directories (never commit)
+.yolo/
+.team-build/
+.jira-state/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Node (if any tooling is added)
+node_modules/

@@ -67,7 +67,21 @@ JSON array, each entry:
 }
 ```
 
-- `action`: `create` | `modify` | `configure` | `scaffold` | `install` | `skip`
+For errors, use `action: "error"` with an additional `error` field:
+
+```json
+{
+  "step": 3,
+  "action": "error",
+  "what": "Failed to install dependencies",
+  "files": [],
+  "commit": null,
+  "error": "npm ERR! code ENOTFOUND",
+  "ts": "2026-04-02T14:32:00Z"
+}
+```
+
+- `action`: `create` | `modify` | `configure` | `scaffold` | `install` | `skip` | `error` | `watchdog-check` | `complete`
 - `what`: what was done (1 sentence, English)
 - `files`: changed/created files
 - `commit`: commit hash (`null` if none)

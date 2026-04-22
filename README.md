@@ -7,7 +7,12 @@ Claude Code plugin bundling autonomous execution modes: full YOLO mode, backgrou
 ## Install
 
 ```bash
-claude plugin install autonomous-ops@musabkara-claude-marketplace
+# From the Claude marketplace (once published):
+claude plugin install autonomous-ops
+
+# Or install directly from source:
+git clone https://github.com/SkyWalker2506/ccplugin-autonomous-ops
+claude plugin install ./ccplugin-autonomous-ops
 ```
 
 ## Commands
